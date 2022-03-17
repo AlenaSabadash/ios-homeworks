@@ -7,27 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C278BB3B27CBC2D000F5DE99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BB3A27CBC2D000F5DE99 /* AppDelegate.swift */; };
-		C278BB3D27CBC2D000F5DE99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BB3C27CBC2D000F5DE99 /* SceneDelegate.swift */; };
-		C278BB3F27CBC2D000F5DE99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BB3E27CBC2D000F5DE99 /* ViewController.swift */; };
-		C278BB4227CBC2D000F5DE99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C278BB4027CBC2D000F5DE99 /* Main.storyboard */; };
-		C278BB4427CBC2D200F5DE99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C278BB4327CBC2D200F5DE99 /* Assets.xcassets */; };
-		C278BB4727CBC2D200F5DE99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C278BB4527CBC2D200F5DE99 /* LaunchScreen.storyboard */; };
+		C278BACD27CBA10000F5DE99 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BACC27CBA10000F5DE99 /* AppDelegate.swift */; };
+		C278BACF27CBA10000F5DE99 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BACE27CBA10000F5DE99 /* SceneDelegate.swift */; };
+		C278BAD127CBA10000F5DE99 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BAD027CBA10000F5DE99 /* ViewController.swift */; };
+		C278BAD427CBA10000F5DE99 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C278BAD227CBA10000F5DE99 /* Main.storyboard */; };
+		C278BAD627CBA10200F5DE99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C278BAD527CBA10200F5DE99 /* Assets.xcassets */; };
+		C278BAD927CBA10200F5DE99 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C278BAD727CBA10200F5DE99 /* LaunchScreen.storyboard */; };
+		C278BAE127CBA12500F5DE99 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C278BAE027CBA12500F5DE99 /* ProfileView.xib */; };
+		C278BAE327CBA1E400F5DE99 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BAE227CBA1E400F5DE99 /* ProfileView.swift */; };
+		C278BAE527CBA55000F5DE99 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C278BAE427CBA55000F5DE99 /* Profile.storyboard */; };
+		C278BAE727CBA59800F5DE99 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C278BAE627CBA59800F5DE99 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C278BB3727CBC2D000F5DE99 /* Navigator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigator.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C278BB3A27CBC2D000F5DE99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C278BB3C27CBC2D000F5DE99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C278BB3E27CBC2D000F5DE99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C278BB4127CBC2D000F5DE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C278BB4327CBC2D200F5DE99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C278BB4627CBC2D200F5DE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		C278BB4827CBC2D200F5DE99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C278BAC927CBA10000F5DE99 /* Netology_IB_Instruments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Netology_IB_Instruments.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C278BACC27CBA10000F5DE99 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C278BACE27CBA10000F5DE99 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C278BAD027CBA10000F5DE99 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C278BAD327CBA10000F5DE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C278BAD527CBA10200F5DE99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C278BAD827CBA10200F5DE99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C278BADA27CBA10200F5DE99 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C278BAE027CBA12500F5DE99 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		C278BAE227CBA1E400F5DE99 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		C278BAE427CBA55000F5DE99 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		C278BAE627CBA59800F5DE99 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C278BB3427CBC2D000F5DE99 /* Frameworks */ = {
+		C278BAC627CBA10000F5DE99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,72 +45,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C278BB2E27CBC2D000F5DE99 = {
+		C278BAC027CBA10000F5DE99 = {
 			isa = PBXGroup;
 			children = (
-				C278BB3927CBC2D000F5DE99 /* Navigator */,
-				C278BB3827CBC2D000F5DE99 /* Products */,
+				C278BACB27CBA10000F5DE99 /* Netology_IB_Instruments */,
+				C278BACA27CBA10000F5DE99 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C278BB3827CBC2D000F5DE99 /* Products */ = {
+		C278BACA27CBA10000F5DE99 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C278BB3727CBC2D000F5DE99 /* Navigator.app */,
+				C278BAC927CBA10000F5DE99 /* Netology_IB_Instruments.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C278BB3927CBC2D000F5DE99 /* Navigator */ = {
+		C278BACB27CBA10000F5DE99 /* Netology_IB_Instruments */ = {
 			isa = PBXGroup;
 			children = (
-				C278BB3A27CBC2D000F5DE99 /* AppDelegate.swift */,
-				C278BB3C27CBC2D000F5DE99 /* SceneDelegate.swift */,
-				C278BB3E27CBC2D000F5DE99 /* ViewController.swift */,
-				C278BB4027CBC2D000F5DE99 /* Main.storyboard */,
-				C278BB4327CBC2D200F5DE99 /* Assets.xcassets */,
-				C278BB4527CBC2D200F5DE99 /* LaunchScreen.storyboard */,
-				C278BB4827CBC2D200F5DE99 /* Info.plist */,
+				C278BACC27CBA10000F5DE99 /* AppDelegate.swift */,
+				C278BACE27CBA10000F5DE99 /* SceneDelegate.swift */,
+				C278BAD027CBA10000F5DE99 /* ViewController.swift */,
+				C278BAE027CBA12500F5DE99 /* ProfileView.xib */,
+				C278BAE227CBA1E400F5DE99 /* ProfileView.swift */,
+				C278BAD227CBA10000F5DE99 /* Main.storyboard */,
+				C278BAE427CBA55000F5DE99 /* Profile.storyboard */,
+				C278BAE627CBA59800F5DE99 /* ProfileViewController.swift */,
+				C278BAD527CBA10200F5DE99 /* Assets.xcassets */,
+				C278BAD727CBA10200F5DE99 /* LaunchScreen.storyboard */,
+				C278BADA27CBA10200F5DE99 /* Info.plist */,
 			);
-			path = Navigator;
+			path = Netology_IB_Instruments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C278BB3627CBC2D000F5DE99 /* Navigator */ = {
+		C278BAC827CBA10000F5DE99 /* Netology_IB_Instruments */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C278BB4B27CBC2D200F5DE99 /* Build configuration list for PBXNativeTarget "Navigator" */;
+			buildConfigurationList = C278BADD27CBA10200F5DE99 /* Build configuration list for PBXNativeTarget "Netology_IB_Instruments" */;
 			buildPhases = (
-				C278BB3327CBC2D000F5DE99 /* Sources */,
-				C278BB3427CBC2D000F5DE99 /* Frameworks */,
-				C278BB3527CBC2D000F5DE99 /* Resources */,
+				C278BAC527CBA10000F5DE99 /* Sources */,
+				C278BAC627CBA10000F5DE99 /* Frameworks */,
+				C278BAC727CBA10000F5DE99 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Navigator;
-			productName = Navigator;
-			productReference = C278BB3727CBC2D000F5DE99 /* Navigator.app */;
+			name = Netology_IB_Instruments;
+			productName = Netology_IB_Instruments;
+			productReference = C278BAC927CBA10000F5DE99 /* Netology_IB_Instruments.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C278BB2F27CBC2D000F5DE99 /* Project object */ = {
+		C278BAC127CBA10000F5DE99 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Alena Sabadash";
 				TargetAttributes = {
-					C278BB3627CBC2D000F5DE99 = {
+					C278BAC827CBA10000F5DE99 = {
 						CreatedOnToolsVersion = 11.6;
 					};
 				};
 			};
-			buildConfigurationList = C278BB3227CBC2D000F5DE99 /* Build configuration list for PBXProject "Navigator" */;
+			buildConfigurationList = C278BAC427CBA10000F5DE99 /* Build configuration list for PBXProject "Netology_IB_Instruments" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -110,55 +122,59 @@
 				en,
 				Base,
 			);
-			mainGroup = C278BB2E27CBC2D000F5DE99;
-			productRefGroup = C278BB3827CBC2D000F5DE99 /* Products */;
+			mainGroup = C278BAC027CBA10000F5DE99;
+			productRefGroup = C278BACA27CBA10000F5DE99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C278BB3627CBC2D000F5DE99 /* Navigator */,
+				C278BAC827CBA10000F5DE99 /* Netology_IB_Instruments */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C278BB3527CBC2D000F5DE99 /* Resources */ = {
+		C278BAC727CBA10000F5DE99 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C278BB4727CBC2D200F5DE99 /* LaunchScreen.storyboard in Resources */,
-				C278BB4427CBC2D200F5DE99 /* Assets.xcassets in Resources */,
-				C278BB4227CBC2D000F5DE99 /* Main.storyboard in Resources */,
+				C278BAE127CBA12500F5DE99 /* ProfileView.xib in Resources */,
+				C278BAD927CBA10200F5DE99 /* LaunchScreen.storyboard in Resources */,
+				C278BAE527CBA55000F5DE99 /* Profile.storyboard in Resources */,
+				C278BAD627CBA10200F5DE99 /* Assets.xcassets in Resources */,
+				C278BAD427CBA10000F5DE99 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C278BB3327CBC2D000F5DE99 /* Sources */ = {
+		C278BAC527CBA10000F5DE99 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C278BB3F27CBC2D000F5DE99 /* ViewController.swift in Sources */,
-				C278BB3B27CBC2D000F5DE99 /* AppDelegate.swift in Sources */,
-				C278BB3D27CBC2D000F5DE99 /* SceneDelegate.swift in Sources */,
+				C278BAE327CBA1E400F5DE99 /* ProfileView.swift in Sources */,
+				C278BAD127CBA10000F5DE99 /* ViewController.swift in Sources */,
+				C278BAE727CBA59800F5DE99 /* ProfileViewController.swift in Sources */,
+				C278BACD27CBA10000F5DE99 /* AppDelegate.swift in Sources */,
+				C278BACF27CBA10000F5DE99 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C278BB4027CBC2D000F5DE99 /* Main.storyboard */ = {
+		C278BAD227CBA10000F5DE99 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C278BB4127CBC2D000F5DE99 /* Base */,
+				C278BAD327CBA10000F5DE99 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C278BB4527CBC2D200F5DE99 /* LaunchScreen.storyboard */ = {
+		C278BAD727CBA10200F5DE99 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C278BB4627CBC2D200F5DE99 /* Base */,
+				C278BAD827CBA10200F5DE99 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -166,7 +182,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C278BB4927CBC2D200F5DE99 /* Debug */ = {
+		C278BADB27CBA10200F5DE99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -226,7 +242,7 @@
 			};
 			name = Debug;
 		};
-		C278BB4A27CBC2D200F5DE99 /* Release */ = {
+		C278BADC27CBA10200F5DE99 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -280,62 +296,62 @@
 			};
 			name = Release;
 		};
-		C278BB4C27CBC2D200F5DE99 /* Debug */ = {
+		C278BADE27CBA10200F5DE99 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Navigator/Info.plist;
+				INFOPLIST_FILE = Netology_IB_Instruments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alena.Navigator;
+				PRODUCT_BUNDLE_IDENTIFIER = "alena.Netology-IB-Instruments";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
-		C278BB4D27CBC2D200F5DE99 /* Release */ = {
+		C278BADF27CBA10200F5DE99 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = Navigator/Info.plist;
+				INFOPLIST_FILE = Netology_IB_Instruments/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = alena.Navigator;
+				PRODUCT_BUNDLE_IDENTIFIER = "alena.Netology-IB-Instruments";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C278BB3227CBC2D000F5DE99 /* Build configuration list for PBXProject "Navigator" */ = {
+		C278BAC427CBA10000F5DE99 /* Build configuration list for PBXProject "Netology_IB_Instruments" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C278BB4927CBC2D200F5DE99 /* Debug */,
-				C278BB4A27CBC2D200F5DE99 /* Release */,
+				C278BADB27CBA10200F5DE99 /* Debug */,
+				C278BADC27CBA10200F5DE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C278BB4B27CBC2D200F5DE99 /* Build configuration list for PBXNativeTarget "Navigator" */ = {
+		C278BADD27CBA10200F5DE99 /* Build configuration list for PBXNativeTarget "Netology_IB_Instruments" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C278BB4C27CBC2D200F5DE99 /* Debug */,
-				C278BB4D27CBC2D200F5DE99 /* Release */,
+				C278BADE27CBA10200F5DE99 /* Debug */,
+				C278BADF27CBA10200F5DE99 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C278BB2F27CBC2D000F5DE99 /* Project object */;
+	rootObject = C278BAC127CBA10000F5DE99 /* Project object */;
 }

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Navigator.xcodeproj">
+      location = "self:Netology_IB_Instruments.xcodeproj">
    </FileRef>
 </Workspace>

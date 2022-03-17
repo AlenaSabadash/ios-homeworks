@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Navigator
+//  Netology_IB_Instruments
 //
 //  Created by Alena Sabadash on 27.02.2022.
 //  Copyright © 2022 Alena Sabadash. All rights reserved.

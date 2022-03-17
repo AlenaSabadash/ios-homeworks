@@ -38,11 +38,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             ),
             tag: 1
         )
-
+        
         let profileNC = UINavigationController(rootViewController: profileVC)
         let feedNC = UINavigationController(rootViewController: feedVC)
 
         tabBar.setViewControllers([profileNC, feedNC], animated: true)
+        tabBar.tabBar.tintColor = .label
 
         window?.rootViewController = tabBar
         window?.backgroundColor = .white

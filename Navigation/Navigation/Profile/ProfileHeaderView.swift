@@ -12,6 +12,7 @@ class ProfileHeaderView: UIView {
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "doggie")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.frame.size.width = 150
         imageView.frame.size.height = 150
         imageView.layer.borderWidth = 3
@@ -42,14 +43,12 @@ class ProfileHeaderView: UIView {
     
     private lazy var statusTextField: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemBlue
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var setStatusButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemPink
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Show status", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -67,19 +66,18 @@ class ProfileHeaderView: UIView {
     
     private lazy var labelsStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.spacing = 10
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .black
         return stackView
     }()
     
     private lazy var infoStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 20
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -96,10 +94,10 @@ class ProfileHeaderView: UIView {
     private func setupView() {
         self.addSubview(infoStackView)
         self.addSubview(setStatusButton)
-        self.infoStackView.addSubview(avatarImageView)
-        self.infoStackView.addSubview(labelsStackView)
-        self.labelsStackView.addSubview(fullNameLabel)
-        self.labelsStackView.addSubview(statusLabel)
+        self.infoStackView.addArrangedSubview(avatarImageView)
+        self.infoStackView.addArrangedSubview(labelsStackView)
+        self.labelsStackView.addArrangedSubview(fullNameLabel)
+        self.labelsStackView.addArrangedSubview(statusLabel)
         
         let imageViewAspectRatio = self.avatarImageView.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1.0)
         

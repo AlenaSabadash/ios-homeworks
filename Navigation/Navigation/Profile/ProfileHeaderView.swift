@@ -2,7 +2,7 @@
 //  ProfileHeaderView.swift
 //  Navigation
 //
-//  Created by  Alena Sabadash on 10.03.2022.
+//  Created by  Alena Sabadash on 10.03.2022.
 //
 
 import UIKit

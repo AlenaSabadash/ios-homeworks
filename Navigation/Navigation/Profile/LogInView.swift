@@ -10,9 +10,8 @@ import UIKit
 class LogInView: UIView {
 
     private lazy var logoImageView: UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
-        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -29,6 +28,7 @@ class LogInView: UIView {
         textField.textColor = .black
         textField.font = .systemFont(ofSize: 16)
         textField.autocorrectionType = .no
+        textField.leftViewMode = .always
         return textField
     }()
     
@@ -93,36 +93,25 @@ extension LogInView {
     private func setupView() {
         self.addSubview(loginStackView)
         self.addSubview(logInButton)
-        self.loginStackView.addArrangedSubview(logoImageView)
-        self.loginStackView.addArrangedSubview(textFieldsStackView)
-        self.textFieldsStackView.addArrangedSubview(loginTextField)
-        self.textFieldsStackView.addArrangedSubview(passwordTextField)
-        
-        let logoViewAspectRatio = self.logoImageView.heightAnchor.constraint(equalTo: self.logoImageView.widthAnchor, multiplier: 1.0)
-        
-        let topConstraint = self.loginStackView.topAnchor.constraint(equalTo: self.topAnchor)
-        let leadingConstraint = self.loginStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-        let trailingConstraint = self.loginStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        
-        let logInButtonTopConstraint = self.logInButton.topAnchor.constraint(equalTo: self.textFieldsStackView.bottomAnchor, constant: 16)
-
-        let leadingButtonConstraint = self.logInButton.leadingAnchor.constraint(equalTo: self.textFieldsStackView.leadingAnchor)
-        let trailingButtonConstraint = self.logInButton.trailingAnchor.constraint(equalTo: self.textFieldsStackView.trailingAnchor)
-        let bottomButtonConstraint = self.logInButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        self.addSubview(logoImageView)
+        loginStackView.addArrangedSubview(textFieldsStackView)
+        textFieldsStackView.addArrangedSubview(loginTextField)
+        textFieldsStackView.addArrangedSubview(passwordTextField)
         
         NSLayoutConstraint.activate([
-            logoViewAspectRatio,
-            topConstraint,
-            leadingConstraint,
-            trailingConstraint,
-            logInButtonTopConstraint,
-            leadingButtonConstraint,
-            trailingButtonConstraint,
-            bottomButtonConstraint,
             logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),
+            logoImageView.widthAnchor.constraint(equalToConstant: 100),
+            logoImageView.heightAnchor.constraint(equalToConstant: 100),
             textFieldsStackView.heightAnchor.constraint(equalToConstant: 100),
             logInButton.heightAnchor.constraint(equalToConstant: 50),
+            loginStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
+            loginStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            loginStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            logInButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 16),
+            logInButton.leadingAnchor.constraint(equalTo: textFieldsStackView.leadingAnchor),
+            logInButton.trailingAnchor.constraint(equalTo: textFieldsStackView.trailingAnchor),
+            logInButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }

@@ -16,7 +16,7 @@ class LogInView: UIView {
         return imageView
     }()
     
-    private lazy var loginTextField: UITextField = {
+    lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Email or phone"
@@ -32,7 +32,7 @@ class LogInView: UIView {
         return textField
     }()
     
-    private lazy var passwordTextField: UITextField = {
+    lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = "Password"

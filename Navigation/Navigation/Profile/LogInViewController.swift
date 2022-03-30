@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
     
     private lazy var logInView: LogInView = {
         let view = LogInView(frame: .zero)
@@ -21,13 +21,24 @@ class LogInViewController: UIViewController {
         return scrollView
     }()
     
+    var activeField: UITextField?
+    
     private func setupGesture() {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(hideKeyboard)))
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.logInView.loginTextField.delegate = self
+        self.logInView.passwordTextField.delegate = self
+    }
+    
     private func setupView() {
+        self.activeField = UITextField()
+        
         view.addSubview(scrollView)
         scrollView.addSubview(logInView)
         
@@ -72,19 +83,40 @@ class LogInViewController: UIViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-           return
+        guard let keyboardInfo = notification.userInfo else { return }
+        if let keyboardSize = (keyboardInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.size {
+            let keyboardHeight = keyboardSize.height + 10
+            let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+            self.scrollView.contentInset = contentInsets
+            var viewRect = self.view.frame
+            viewRect.size.height -= keyboardHeight
+            guard let activeField = self.activeField else { return }
+
+            if !viewRect.contains(activeField.frame.origin) {
+                let scrollPoint = CGPoint(x: 0, y: activeField.frame.origin.y - keyboardHeight)
+                self.scrollView.setContentOffset(scrollPoint, animated: true)
+            }
+
         }
-        
-        view.frame.origin.y = 0 - keyboardSize.height
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y = 0
+        let contentInsets = UIEdgeInsets.zero
+        scrollView.contentInset = contentInsets
+        self.view.endEditing(true)
     }
     
     @objc func logInButtonPressed()  {
         let profileVC = ProfileViewController()
         self.navigationController?.pushViewController(profileVC, animated: true)
+    }
+}
+
+
+extension LogInViewController: UITextViewDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.activeField = nil
+        return true
     }
 }

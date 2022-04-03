@@ -1,19 +1,18 @@
 //
-//  PhotoCollectionViewCell.swift
+//  PhotoGalleryCollectionViewCell.swift
 //  Navigation
 //
-//  Created by  Dmitry Anufriev on 02.04.2022.
+//  Created by  Alena Sabadash on 03.04.2022.
 //
 
 import UIKit
 
-class PhotosCollectionViewCell: UICollectionViewCell {
-    static let identifier = "PhotoCollectionViewCell"
+class PhotoGalleryCollectionViewCell: UICollectionViewCell {
+    static let identifier = "PhotoGalleryCollectionViewCell"
     
     lazy var photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 6
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -30,5 +29,10 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         photoImageView.frame = contentView.bounds
+    }
+    
+    public func configure(with model: Photo) {
+        print("photo name: \(model.name)")
+        photoImageView.image = UIImage(named: model.name)
     }
 }

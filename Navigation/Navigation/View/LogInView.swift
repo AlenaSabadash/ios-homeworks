@@ -15,7 +15,7 @@ class LogInView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
+
     lazy var loginTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class LogInView: UIView {
         textField.leftViewMode = .always
         return textField
     }()
-    
+
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -47,7 +47,7 @@ class LogInView: UIView {
         textField.autocorrectionType = .no
         return textField
     }()
-    
+
     private lazy var loginStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class LogInView: UIView {
         stackView.spacing = 120
         return stackView
     }()
-    
+
     private lazy var textFieldsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,7 @@ class LogInView: UIView {
         stackView.alignment = .fill
         return stackView
     }()
-    
+
     lazy var logInButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(named: "VkColorSet")
@@ -77,16 +77,16 @@ class LogInView: UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }
 
 extension LogInView {
@@ -97,7 +97,7 @@ extension LogInView {
         loginStackView.addArrangedSubview(textFieldsStackView)
         textFieldsStackView.addArrangedSubview(loginTextField)
         textFieldsStackView.addArrangedSubview(passwordTextField)
-        
+
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 120),

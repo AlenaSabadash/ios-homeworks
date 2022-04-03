@@ -13,8 +13,8 @@ class ProfileHeaderView: UIView {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "doggie")
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.frame.size.width = 150
-        imageView.frame.size.height = 150
+        imageView.frame.size.width = 200
+        imageView.frame.size.height = 200
         imageView.layer.borderWidth = 3
         imageView.layer.masksToBounds = false
         imageView.layer.borderColor = UIColor.white.cgColor

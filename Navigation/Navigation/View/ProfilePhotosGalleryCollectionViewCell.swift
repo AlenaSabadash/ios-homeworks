@@ -33,7 +33,6 @@ class ProfilePhotosGalleryCollectionViewCell: UICollectionViewCell {
     }
     
     public func configure(with model: Photo) {
-        print("photo name: \(model.name)")
         photoImageView.image = UIImage(named: model.name)
     }
 }

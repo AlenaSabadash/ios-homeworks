@@ -35,7 +35,6 @@ class PostViewController: UIViewController {
     }
 
     @objc private func didTapInfoMenuItem() {
-        print("#function")
         let infoVC = InfoViewController()
         present(infoVC, animated: true, completion: nil)
     }

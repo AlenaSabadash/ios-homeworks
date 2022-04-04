@@ -32,7 +32,6 @@ class FeedViewController: UIViewController {
     }
 
     @objc private func didTapButton() {
-        print("#function")
         let postVC = PostViewController()
         postVC.post = post
         self.navigationController?.pushViewController(postVC, animated: true)

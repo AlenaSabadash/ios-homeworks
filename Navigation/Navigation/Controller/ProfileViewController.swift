@@ -28,6 +28,13 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
     
+    private lazy var collectionHeaderView: ProfileGalleryHeaderView = {
+        let headerView = ProfileGalleryHeaderView()
+        headerView.backgroundColor = .red
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        return headerView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Профиль"
@@ -56,6 +63,14 @@ class ProfileViewController: UIViewController {
         photosTableView.delegate = self
         photosTableView.dataSource = self
         photosTableView.tableHeaderView = profileHeaderView
+
+    }
+    
+    @objc func galleryButtonPressed()  {
+        DispatchQueue.main.async { [weak self] in
+            let vc = PhotoGalleryViewController()
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
 }
@@ -87,33 +102,17 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 200))
-        let label = UILabel()
-
-        label.text = "Photos"
-        label.font = .boldSystemFont(ofSize: 24)
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+        header.addSubview(collectionHeaderView.stackView)
         
-        let button = UIButton(type: .custom)
-        let buttonImage = UIImage(systemName: "arrow.right", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
-        button.setImage(buttonImage, for: .normal)
-        button.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        button.tintColor = .black
-        
-        header.backgroundColor = .secondarySystemBackground
-        
-        let stackView = UIStackView(arrangedSubviews: [label, button])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.alignment = .center
-        stackView.spacing = 10
-        
-        header.addSubview(stackView)
+        collectionHeaderView.button.addTarget(self, action: #selector(galleryButtonPressed), for: UIControl.Event.touchUpInside)
         
         NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 12),
-            stackView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -12),
-            stackView.topAnchor.constraint(equalTo: header.topAnchor)
+            collectionHeaderView.stackView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 12),
+            collectionHeaderView.stackView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -12),
+            collectionHeaderView.stackView.topAnchor.constraint(equalTo: header.topAnchor)
         ])
-
+        
         return header
     }
     

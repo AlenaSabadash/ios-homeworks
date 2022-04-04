@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A157D3027FA1949006C53BB /* ProfileGalleryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A157D2F27FA1949006C53BB /* ProfileGalleryHeaderView.swift */; };
 		0A5B552F27F9723A00F23A90 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B552E27F9723A00F23A90 /* Photo.swift */; };
 		0A5B553B27F9C82F00F23A90 /* PhotoGalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B553A27F9C82F00F23A90 /* PhotoGalleryCollectionViewCell.swift */; };
 		0A5B553D27F9C89A00F23A90 /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5B553C27F9C89A00F23A90 /* PhotoGalleryViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A157D2F27FA1949006C53BB /* ProfileGalleryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGalleryHeaderView.swift; sourceTree = "<group>"; };
 		0A5B552E27F9723A00F23A90 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0A5B553A27F9C82F00F23A90 /* PhotoGalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A5B553C27F9C89A00F23A90 /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				0A69E6A627F55CDB002FCDFF /* ProfilePhotoGalleryTableViewCell.swift */,
 				0AF23B8C27F7F6BF00DC840D /* ProfilePhotosGalleryCollectionViewCell.swift */,
 				0A5B553A27F9C82F00F23A90 /* PhotoGalleryCollectionViewCell.swift */,
+				0A157D2F27FA1949006C53BB /* ProfileGalleryHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				0A69F3F027D1CA2500D39C25 /* FeedViewController.swift in Sources */,
 				0A69F3C227D1C95700D39C25 /* SceneDelegate.swift in Sources */,
 				0ABAB2F927DA4946005EC203 /* ProfileHeaderView.swift in Sources */,
+				0A157D3027FA1949006C53BB /* ProfileGalleryHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

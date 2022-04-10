@@ -28,13 +28,6 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
     
-    private lazy var collectionHeaderView: ProfileGalleryHeaderView = {
-        let headerView = ProfileGalleryHeaderView()
-        headerView.backgroundColor = .red
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        return headerView
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Профиль"
@@ -67,10 +60,8 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func galleryButtonPressed()  {
-        DispatchQueue.main.async { [weak self] in
-            let vc = PhotoGalleryViewController()
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = PhotoGalleryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }
@@ -78,10 +69,8 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, PhotosTableViewCellDelegate {
     
     func photosTableViewCellDidTapCell(_ cell: ProfilePhotoGalleryTableViewCell) {
-        DispatchQueue.main.async { [weak self] in
-            let vc = PhotoGalleryViewController()
-            self?.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = PhotoGalleryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -101,23 +90,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        header.addSubview(collectionHeaderView.stackView)
-        
-        collectionHeaderView.button.addTarget(self, action: #selector(galleryButtonPressed), for: UIControl.Event.touchUpInside)
-        
-        NSLayoutConstraint.activate([
-            collectionHeaderView.stackView.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 12),
-            collectionHeaderView.stackView.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -12),
-            collectionHeaderView.stackView.topAnchor.constraint(equalTo: header.topAnchor)
-        ])
-        
-        return header
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PhotoGalleryViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        120
+        170
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

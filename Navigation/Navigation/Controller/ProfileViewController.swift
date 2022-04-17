@@ -17,14 +17,16 @@ let tablePhotos: [Photo] = [
 class ProfileViewController: UIViewController {
 
     private lazy var profileHeaderView: ProfileHeaderView = {
-        let profileHeaderView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 350))
+        let profileHeaderView = ProfileHeaderView(frame: .zero)
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
         return profileHeaderView
     }()
     
     private lazy var photosTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.allowsSelection = false
         tableView.register(ProfilePhotoGalleryTableViewCell.self, forCellReuseIdentifier: ProfilePhotoGalleryTableViewCell.identifier)
+        tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
         return tableView
     }()
     
@@ -43,20 +45,9 @@ class ProfileViewController: UIViewController {
     
     private func setupView() {
         self.view.addSubview(photosTableView)
-        self.view.addSubview(profileHeaderView)
-        
-        let profileHeaderViewConstraints = [
-            self.profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.profileHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.profileHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(profileHeaderViewConstraints)
         
         photosTableView.delegate = self
         photosTableView.dataSource = self
-        photosTableView.tableHeaderView = profileHeaderView
-
     }
     
     @objc func galleryButtonPressed()  {
@@ -81,6 +72,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
         1
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.identifier) as? ProfileHeaderView else { return nil }
+        return view
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfilePhotoGalleryTableViewCell.identifier, for: indexPath) as? ProfilePhotoGalleryTableViewCell else { return UITableViewCell() }
         cell.configure(with: tablePhotos)
@@ -100,10 +96,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 200
+        200
     }
 }

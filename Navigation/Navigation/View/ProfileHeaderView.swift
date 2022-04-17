@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
+    
+    static let identifier = "ProfileHeaderView"
     
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -18,7 +20,7 @@ class ProfileHeaderView: UIView {
         imageView.layer.borderWidth = 3
         imageView.layer.masksToBounds = false
         imageView.layer.borderColor = UIColor.white.cgColor
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.layer.cornerRadius = imageView.frame.size.width / 3
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -81,14 +83,13 @@ class ProfileHeaderView: UIView {
         return stackView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupView()
+        fatalError()
     }
 
     private func setupView() {

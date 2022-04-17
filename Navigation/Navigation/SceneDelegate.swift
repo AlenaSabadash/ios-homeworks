@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
 
         let tabBar = UITabBarController()
-        let profileVC = ProfileViewController()
+        let profileVC = LogInViewController()
         let feedVC = FeedViewController()
 
         profileVC.tabBarItem = UITabBarItem(

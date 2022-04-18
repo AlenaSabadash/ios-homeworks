@@ -54,6 +54,11 @@ class ProfileViewController: UIViewController {
         let vc = PhotoGalleryViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
 }
 

@@ -2,7 +2,7 @@
 //  PhotoGalleryViewController.swift
 //  Navigation
 //
-//  Created by  Alena Sabadash on 03.04.2022.
+//  Created by  Alena Sabadash on 03.04.2022.
 //
 
 import UIKit
@@ -32,11 +32,8 @@ let photoGallery: [Photo] = [
 
 class PhotoGalleryViewController: UIViewController {
     
-    private var smallView: UIView?
-    private var smallFrame: CGRect?
-    private var bigFrame: CGRect?
-    
-    private let photoTapGestureRecognizer = UITapGestureRecognizer()
+    var photoImageView: UIView?
+    var stratingPhotoImageViewFrame: CGRect?
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -54,8 +51,6 @@ class PhotoGalleryViewController: UIViewController {
         self.title = "Photo Gallery"
         self.view.backgroundColor = .lightGray
         setupView()
-//        setupGesture()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +69,6 @@ class PhotoGalleryViewController: UIViewController {
     }
     
     private func setupView() {
-        bigFrame = view.frame
         self.view.addSubview(collectionView)
         
         let galleryConstraints = [
@@ -86,34 +80,6 @@ class PhotoGalleryViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-    }
-    
-    private func setupGesture() {
-        self.photoTapGestureRecognizer.addTarget(self, action: #selector(self.handlePhotoTap(_:)))
-        collectionView.addGestureRecognizer(photoTapGestureRecognizer)
-    }
-    
-    @objc private func viewTapped() {
-        UIView.animate(withDuration: 1, animations: { [weak self] in
-            guard let smallFrame = self?.smallFrame else { return }
-            self?.smallView?.frame = smallFrame
-        }) { [weak self] _ in
-            self?.smallView?.removeFromSuperview()
-            self?.collectionView.isUserInteractionEnabled = true
-        }
-    }
-    
-    @objc private func handlePhotoTap(_ gestureRecognizer: UITapGestureRecognizer) {
-        guard self.photoTapGestureRecognizer === gestureRecognizer else { return }
-        
-        guard let targetIndexPath = collectionView.indexPathForItem(at: photoTapGestureRecognizer.location(in: collectionView)) else { return }
-        let qwe = photoGallery[targetIndexPath.row]
-        print("targetIndexPath: \(qwe.name)")
-        
-//        UIView.animate(withDuration: 0.3) {
-//            self.logInView.logInButtonTopAnchor?.constant = self.logInView.errorLabel.isHidden ? 16 : 40
-//            self.view.layoutIfNeeded()
-//        }
     }
 
 }
@@ -135,28 +101,40 @@ extension PhotoGalleryViewController: UICollectionViewDelegate, UICollectionView
         let width: CGFloat = (collectionView.frame.width / 3) - 12
         return CGSize(width: width, height: width)
     }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        smallFrame = collectionView.convert(cell.frame, to: view)
-        smallView = cell.copyView()
-        guard let smallFrame = smallFrame, let smallView = smallView else { return }
-        smallView.frame = smallFrame
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        smallView.addGestureRecognizer(tapGestureRecognizer)
-        view.addSubview(smallView)
-        collectionView.isUserInteractionEnabled = false
-        UIView.animate(withDuration: 1, animations: { [weak self] in
-            guard let frame = self?.bigFrame else { return }
-            self?.smallView?.frame = frame
-        })
-    }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoGalleryCollectionViewCell else { return }
+        
+        if let photoImageViewFrame = cell.photoImageView.superview?.convert(cell.photoImageView.frame, to: nil) {
+            stratingPhotoImageViewFrame = photoImageViewFrame
+            
+            photoImageView = UIView(frame: stratingPhotoImageViewFrame!)
+            photoImageView?.backgroundColor = UIColor.white
+            
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                self.photoImageView?.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
+            }, completion: { completed in
+                let vc = PhotoGalleryDetailViewController()
+                vc.delegate = self
+                vc.configure(with: cell.photoImageView.image!)
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                
+                self.present(vc, animated: true, completion: nil)
+            })
+            
+            view.addSubview(photoImageView!)
+        }
+    }
+
 }
 
-extension UIView
-{
-    func copyView<T: UIView>() -> T {
-        return NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self)) as! T
+extension PhotoGalleryViewController: PhotoGalleryDetailViewControllerDelegate {
+    func photoDidTap() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.photoImageView?.frame = self.stratingPhotoImageViewFrame!
+        }, completion: { completed in
+            self.photoImageView?.removeFromSuperview()
+        })
     }
 }

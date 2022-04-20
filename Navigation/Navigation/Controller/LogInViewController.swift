@@ -98,7 +98,9 @@ class LogInViewController: UIViewController {
 
         logInView.loginTextField.delegate = self
         logInView.passwordTextField.delegate = self
-        logInView.logInButton.addTarget(self, action: #selector(logInButtonPressed), for: UIControl.Event.touchUpInside)
+        logInView.logInButton.addTarget(self, action: #selector(logInButtonPressed), for: .touchUpInside)
+        logInView.loginTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        logInView.passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         alertController.addAction(okAction)
     }
 
@@ -150,8 +152,11 @@ class LogInViewController: UIViewController {
         if let login = logInView.loginTextField.text, login.isEmpty,
            let password = logInView.passwordTextField.text, password.isEmpty {
             
-            logInView.loginTextField.layer.borderColor = UIColor.systemRed.cgColor
-            logInView.passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
+            UIView.animate(withDuration: 0.3) {
+                self.logInView.loginTextField.layer.borderColor = UIColor.systemRed.cgColor
+                self.logInView.passwordTextField.layer.borderColor = UIColor.systemRed.cgColor
+                self.view.layoutIfNeeded()
+            }
             
         }
         
@@ -161,6 +166,13 @@ class LogInViewController: UIViewController {
         else {
             let profileVC = ProfileViewController()
             self.navigationController?.pushViewController(profileVC, animated: true)
+        }
+    }
+    
+    @objc func textFieldChanged(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            textField.layer.borderColor = UIColor.lightGray.cgColor
+            self.view.layoutIfNeeded()
         }
     }
     

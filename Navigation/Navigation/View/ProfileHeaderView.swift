@@ -11,6 +11,10 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     static let identifier = "ProfileHeaderView"
     
+    private var statusText: String?
+    
+    var errorLabelTopAnchor: NSLayoutConstraint?
+    
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "doggie")
@@ -43,16 +47,26 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
-    private lazy var statusTextField: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private lazy var statusTextField: UITextField = {
+        let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Указать статус"
+        textField.layer.cornerRadius = 12
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.lightGray.cgColor
+        textField.layer.backgroundColor = UIColor.white.cgColor
+        textField.textColor = .black
+        textField.font = .systemFont(ofSize: 15)
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
+        textField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
+        return textField
     }()
     
     private lazy var setStatusButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Show status", for: .normal)
+        button.setTitle("Set status", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor.systemBlue
         button.titleLabel?.textColor = .white
@@ -99,6 +113,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         self.infoStackView.addArrangedSubview(labelsStackView)
         self.labelsStackView.addArrangedSubview(fullNameLabel)
         self.labelsStackView.addArrangedSubview(statusLabel)
+        self.labelsStackView.addArrangedSubview(statusTextField)
         
         let imageViewAspectRatio = self.avatarImageView.heightAnchor.constraint(equalTo: self.avatarImageView.widthAnchor, multiplier: 1.0)
         
@@ -120,13 +135,28 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
             buttonTopConstraint,
             leadingButtonConstraint,
             trailingButtonConstraint,
-            bottomButtonConstraint
-        ])
+            bottomButtonConstraint,
+            self.errorLabelTopAnchor
+        ].compactMap({ $0 }))
     }
 
     @objc func buttonPressed() {
-        let status = statusLabel.text ?? ""
-        print("Status: \(status)")
+        if statusTextField.text?.count == 0 {
+            UIView.animate(withDuration: 0.3) {
+                self.statusTextField.layer.borderColor = UIColor.systemRed.cgColor
+                self.contentView.layoutIfNeeded()
+            }
+        } else {
+            statusLabel.text = statusText
+            statusTextField.text = ""
+        }
     }
 
+    @objc func statusTextChanged(_ textField: UITextField) {
+        statusText = textField.text
+        UIView.animate(withDuration: 0.3) {
+            self.statusTextField.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
+    
 }

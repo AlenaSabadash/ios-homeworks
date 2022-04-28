@@ -9,6 +9,8 @@ import UIKit
 
 class LogInView: UIView {
 
+    var logInButtonTopAnchor: NSLayoutConstraint?
+    
     private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "logo")
@@ -29,6 +31,7 @@ class LogInView: UIView {
         textField.font = .systemFont(ofSize: 16)
         textField.autocorrectionType = .no
         textField.leftViewMode = .always
+        textField.autocapitalizationType = .none
         return textField
     }()
 
@@ -47,13 +50,22 @@ class LogInView: UIView {
         textField.autocorrectionType = .no
         return textField
     }()
+    
+    lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .red
+        label.textAlignment = .center
+        label.isHidden = true
+        return label
+    }()
 
     private lazy var loginStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
-        stackView.spacing = 120
+        stackView.spacing = 10
         return stackView
     }()
 
@@ -97,6 +109,9 @@ extension LogInView {
         loginStackView.addArrangedSubview(textFieldsStackView)
         textFieldsStackView.addArrangedSubview(loginTextField)
         textFieldsStackView.addArrangedSubview(passwordTextField)
+        loginStackView.addArrangedSubview(errorLabel)
+        
+        self.logInButtonTopAnchor = logInButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 16)
 
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
@@ -108,10 +123,10 @@ extension LogInView {
             loginStackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 120),
             loginStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
             loginStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-            logInButton.topAnchor.constraint(equalTo: textFieldsStackView.bottomAnchor, constant: 16),
+            self.logInButtonTopAnchor,
             logInButton.leadingAnchor.constraint(equalTo: textFieldsStackView.leadingAnchor),
             logInButton.trailingAnchor.constraint(equalTo: textFieldsStackView.trailingAnchor),
             logInButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
+        ].compactMap({ $0 }))
     }
 }

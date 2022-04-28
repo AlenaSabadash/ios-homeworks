@@ -27,38 +27,79 @@ class ProfileViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.register(ProfilePhotoGalleryTableViewCell.self, forCellReuseIdentifier: ProfilePhotoGalleryTableViewCell.identifier)
         tableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
+    }()
+    
+    private lazy var postsTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.allowsSelection = false
+        tableView.register(PostPreviewTableViewCell.self, forCellReuseIdentifier: PostPreviewTableViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
+        return stackView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Профиль"
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .systemGray6
         setupView()
 
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        photosTableView.frame = view.bounds
-    }
-    
     private func setupView() {
-        self.view.addSubview(photosTableView)
+        self.view.addSubview(stackView)
+        stackView.addArrangedSubview(photosTableView)
+        stackView.addArrangedSubview(postsTableView)
+
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
         
         photosTableView.delegate = self
         photosTableView.dataSource = self
+        
+        postsTableView.delegate = self
+        postsTableView.dataSource = self
     }
     
     @objc func galleryButtonPressed()  {
         let vc = PhotoGalleryViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+    }
 
 }
 
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, PhotosTableViewCellDelegate {
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, PhotosTableViewCellDelegate, PostPreviewTableViewCellDelegate {
     
+    func didTapPost(_ cell: PostPreviewTableViewCell) {
+        let vc = PostViewController()
+        vc.configure(with: cell)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func didTapLike(_ cell: PostPreviewTableViewCell) {
+        cell.post.likes += 1
+        cell.configure(with: cell.post)
+    }
+
     func photosTableViewCellDidTapCell(_ cell: ProfilePhotoGalleryTableViewCell) {
         let vc = PhotoGalleryViewController()
         self.navigationController?.pushViewController(vc, animated: true)
@@ -69,7 +110,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        switch tableView {
+            case self.postsTableView:
+                return 2
+            default:
+                return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -78,12 +124,21 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProfilePhotoGalleryTableViewCell.identifier, for: indexPath) as? ProfilePhotoGalleryTableViewCell else { return UITableViewCell() }
-        cell.configure(with: tablePhotos)
-        
-        cell.delegate = self
-        
-        return cell
+        switch tableView {
+            case self.photosTableView:
+                let cell = tableView.dequeueReusableCell(withIdentifier: ProfilePhotoGalleryTableViewCell.identifier, for: indexPath) as! ProfilePhotoGalleryTableViewCell
+                    cell.configure(with: tablePhotos)
+                    cell.delegate = self
+                    return cell
+
+            case self.postsTableView:
+                let cell = tableView.dequeueReusableCell(withIdentifier: PostPreviewTableViewCell.identifier, for: indexPath) as! PostPreviewTableViewCell
+                    cell.configure(with: posts[indexPath.row])
+                    cell.delegate = self
+                    return cell
+            default:
+                return UITableViewCell()
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -92,10 +147,20 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        170
+        switch tableView {
+            case self.postsTableView:
+                return 350
+            default:
+                return 170
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        200
+        switch tableView {
+            case self.postsTableView:
+                return 0
+            default:
+                return 200
+        }
     }
 }

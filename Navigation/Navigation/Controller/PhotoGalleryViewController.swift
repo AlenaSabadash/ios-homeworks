@@ -2,7 +2,7 @@
 //  PhotoGalleryViewController.swift
 //  Navigation
 //
-//  Created by  Alena Sabadash on 03.04.2022.
+//  Created by  Alena Sabadash on 03.04.2022.
 //
 
 import UIKit
@@ -32,6 +32,9 @@ let photoGallery: [Photo] = [
 
 class PhotoGalleryViewController: UIViewController {
     
+    var photoImageView: UIView?
+    var stratingPhotoImageViewFrame: CGRect?
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
@@ -48,7 +51,6 @@ class PhotoGalleryViewController: UIViewController {
         self.title = "Photo Gallery"
         self.view.backgroundColor = .lightGray
         setupView()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -99,5 +101,40 @@ extension PhotoGalleryViewController: UICollectionViewDelegate, UICollectionView
         let width: CGFloat = (collectionView.frame.width / 3) - 12
         return CGSize(width: width, height: width)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoGalleryCollectionViewCell else { return }
+        
+        if let photoImageViewFrame = cell.photoImageView.superview?.convert(cell.photoImageView.frame, to: nil) {
+            stratingPhotoImageViewFrame = photoImageViewFrame
+            
+            photoImageView = UIView(frame: stratingPhotoImageViewFrame!)
+            photoImageView?.backgroundColor = UIColor.white
+            
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                self.photoImageView?.frame = CGRect(x: self.view.frame.origin.x, y: self.view.frame.origin.y, width: self.view.frame.width, height: self.view.frame.height)
+            }, completion: { completed in
+                let vc = PhotoGalleryDetailViewController()
+                vc.delegate = self
+                vc.configure(with: cell.photoImageView.image!)
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overCurrentContext
+                
+                self.present(vc, animated: true, completion: nil)
+            })
+            
+            view.addSubview(photoImageView!)
+        }
+    }
 
+}
+
+extension PhotoGalleryViewController: PhotoGalleryDetailViewControllerDelegate {
+    func photoDidTap() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.photoImageView?.frame = self.stratingPhotoImageViewFrame!
+        }, completion: { completed in
+            self.photoImageView?.removeFromSuperview()
+        })
+    }
 }

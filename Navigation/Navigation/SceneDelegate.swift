@@ -21,7 +21,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tabBar = UITabBarController()
         let profileVC = LogInViewController()
         let feedVC = FeedViewController()
-        let animationVC = AnimationViewController()
 
         profileVC.tabBarItem = UITabBarItem(
             title: "Профиль",
@@ -39,20 +38,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             ),
             tag: 1
         )
-        animationVC.tabBarItem = UITabBarItem(
-            title: "Анимация",
-            image: UIImage(
-                systemName: "play.tv",
-                withConfiguration: UIImage.SymbolConfiguration(weight: .heavy)
-            ),
-            tag: 2
-        )
         
         let profileNC = UINavigationController(rootViewController: profileVC)
         let feedNC = UINavigationController(rootViewController: feedVC)
-        let animationNC = UINavigationController(rootViewController: animationVC)
 
-        tabBar.setViewControllers([profileNC, feedNC, animationNC], animated: true)
+        tabBar.setViewControllers([profileNC, feedNC], animated: true)
         tabBar.tabBar.tintColor = .label
 
         window?.rootViewController = tabBar
